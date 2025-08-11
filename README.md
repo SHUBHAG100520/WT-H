@@ -94,3 +94,7 @@ This project is for academic/demo purposes. Adapt and use freely.
 
 ## 🙌 Credits
 Built using Python, Streamlit, and Gemini AI ✨
+
+
+<img width="1331" height="866" alt="image" src="https://github.com/user-attachments/assets/eee78d70-7aa9-451b-881c-7ac032eb68f9" />
+
