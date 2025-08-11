@@ -1,109 +1,91 @@
-# 🍗 Wings R Us - Smart Recommendation Engine
+🍗 Wings R Us – AI‑Powered Checkout Recommender
+💡 Introduction
+Wings R Us, a fast‑growing Quick Service Restaurant (QSR) chain in the USA, wanted to supercharge its digital ordering experience and boost Average Order Value (AOV).
+This project delivers a smart, hybrid recommendation engine that understands who the customer is and what they're most likely to buy next.
 
-## 🚀 Project Overview
-This project addresses a business problem for **Wings R Us**, a US-based Quick Service Restaurant (QSR) chain. The goal is to design and implement a smart recommendation system to enhance the digital checkout experience, with the primary objective of **increasing the Average Order Value (AOV)**.
+📌 Highlights
 
-The solution involves a **hybrid, context-aware recommendation engine** that provides different types of suggestions based on the customer segment. This repository contains the complete workflow, from initial data cleaning and exploratory data analysis (EDA) to model training and a fully functional **Streamlit web application** for demonstration. The app also integrates the **Gemini API** to provide natural language justifications for its recommendations.
+Hybrid AI – Combines market basket analysis + personalized filtering
 
----
+Context‑aware logic – Different engine for guest vs registered users
 
-## 🌍 Live Resources
-- **Streamlit App** → [Wings R Us Recommender System](https://green-analysts-wings-r-us-recommender-system.streamlit.app/)
-- **Power BI Dashboard** → [Download WWT_dashboard.pbix](./WWT_dashboard.pbix) *(Requires Power BI Desktop)*
+End‑to‑end pipeline – From raw data cleaning to a deployed interactive app
 
----
+Explainable recommendations – Powered by Gemini API
 
-## 📂 File Structure
+🌐 Live Demo & Assets
+Interactive Streamlit App → Try It Here
 
-| File | Description |
-|------|-------------|
-| `Data_Cleaning.ipynb` | End-to-end data cleaning: handling missing values, parsing nested JSON, merging datasets |
-| `EDA.ipynb` | Exploratory Data Analysis, customer segmentation (RFM), business insights |
-| `Recommendation.ipynb` | Trains FP-Growth & Collaborative Filtering models, exports them as `.joblib` |
-| `App.py` | Streamlit app loading models and providing the recommendation UI |
-| `guest_fp_growth_model.joblib` | Pre-trained FP-Growth model for Guest users |
-| `loyal_collab_filtering_model.joblib` | Pre-trained Collaborative Filtering model for Registered/eClub users |
-| `requirements.txt` | Python dependencies |
-| `.env` | Stores your Gemini API key (not committed to GitHub) |
+Power BI Dashboard → WWT_dashboard.pbix (Requires Power BI Desktop)
 
----
-
-## ⚙️ Setup and Installation
-
-### 1. Clone the Repository
-```bash
+📂 Project Files
+File	Purpose
+Data_Cleaning.ipynb	Prepares and merges datasets; fixes nulls; parses nested JSON
+EDA.ipynb	Exploratory analysis; RFM customer segmentation; business findings
+Recommendation.ipynb	Builds FP‑Growth & Collaborative Filtering models; exports .joblib
+App.py	Streamlit frontend for end users
+guest_fp_growth_model.joblib	Pretrained frequent‑itemset model for guest users
+loyal_collab_filtering_model.joblib	Pretrained collaborative filter for registered customers
+requirements.txt	Python package list
+.env	Holds API key for Gemini (excluded from GitHub)
+⚙️ Quick Setup
+1️⃣ Get the Code
+bash
 git clone <your-repository-url>
 cd <repository-folder>
-```
-
-### 2. Create a Virtual Environment (Recommended)
-```bash
+2️⃣ Environment Setup
+bash
 python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-```bash
+source venv/bin/activate  # Windows: venv\Scripts\activate
+3️⃣ Install Dependencies
+bash
 pip install -r requirements.txt
-```
+4️⃣ Add API Key
+Create .env in the root folder:
 
-### 4. Set Up Environment Variable
+text
+GEMINI_API_KEY="your_api_key_here"
+▶️ Running the App
+Option A – Use provided pretrained models (fast)
 
-Create a `.env` file in the root directory:
-
-```env
-GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
-```
-
----
-
-## ▶️ How to Run
-
-### 1. Data Processing and Model Training (Optional)
-Pre-trained models (`.joblib`) are already included. To retrain:
-
-- Run `Data_Cleaning.ipynb` → outputs `final_merged_data.csv`
-- Run `EDA.ipynb` → performs segmentation, insights
-- Run `Recommendation.ipynb` → saves model files
-
-### 2. Launch Streamlit Application
-```bash
+bash
 streamlit run App.py
-```
+Option B – Retrain from scratch (slower)
 
-This will open a browser tab with the interactive app.
+Run Data_Cleaning.ipynb → produces final_merged_data.csv
 
----
+Run EDA.ipynb for segmentation + insights
 
-## 🤖 Modeling Approach
+Run Recommendation.ipynb to generate .joblib models
 
-### Guest Customers → FP-Growth (Market Basket Analysis)
+Launch Streamlit as in Option A
 
-- **What it is**: Finds frequently co-purchased items across thousands of orders.
-- **Why**: Effective for guest users without historical data.
+🧠 How It Works
+👤 Guest Users → FP‑Growth Market Basket
+Detects items bought together frequently
 
-📌 *Example:*  
-*“Customers who buy spicy wings also buy ranch dip.”*
+Works without prior customer history
 
----
+Example: "Customers who order Spicy Wings often grab Ranch Dip too."
 
-### Registered/eClub Customers → Collaborative Filtering
+🔐 Registered / eClub Users → Collaborative Filtering
+Learns from purchase history to find “look‑alike” items
 
-- **What it is**: Personalized recommendations based on item-item similarity from purchase history.
-- **Why**: Better for loyal users with identifiable patterns.
+Tailors suggestions to personal taste
 
-📌 *Example:*  
-*“Since you often buy spicy items, you might like this new spicy flavor you haven't tried yet.”*
+Example: "You love spicy options – here’s a new fiery flavor you haven’t tried yet."
 
----
+📊 Business Insights Discovered
+AOV Surprise – Guests: $53.15 vs Loyal Customers: $39.29
 
-## 📊 Key Insights from EDA
+Dual‑speed market – Mix of high‑spend first‑timers + steady regulars → hybrid model is ideal
 
-- **AOV Paradox**: Loyal customers have lower AOV ($39.29) than Guest users ($53.15).
-- **Two-Speed Customer Base**: A mix of high-value new users and loyal regulars → supports hybrid model.
-- **Geographic Concentration**: Heavy Texas presence suggests future location-aware optimization.
+Geographic skew – Strong presence in Texas; room for geo‑personalized promos
 
----
+🚀 Tech Stack
+Python | Pandas | Scikit‑learn | FP‑Growth | Surprise Library | Streamlit | Gemini API | Power BI
+
+💬 Built to turn every checkout into a bigger basket and a better experience!
 
 ## 📝 License
 This project is for academic/demo purposes. Adapt and use freely.
