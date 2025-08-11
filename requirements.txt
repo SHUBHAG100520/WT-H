@@ -1,0 +1,12 @@
+pandas
+streamlit
+joblib
+google-generativeai
+numpy
+scikit-learn
+matplotlib
+seaborn
+mlxtend
+scipy
+python-dotenv
+gdown
